@@ -252,9 +252,13 @@ class Calendar extends Component {
         indicator = true;
       }
     }
+
+    const { CalendarHeaderComponent } = this.props
+    const Header = CalendarHeaderComponent || CalendarHeader
+
     return (
       <View style={[this.style.container, this.props.style]}>
-        <CalendarHeader
+        <Header
           theme={this.props.theme}
           hideArrows={this.props.hideArrows}
           month={this.state.currentMonth}
