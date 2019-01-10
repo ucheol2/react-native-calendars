@@ -76,8 +76,6 @@ class Calendar extends Component {
     onPressArrowLeft: PropTypes.func,
     // Handler which gets executed when press arrow icon left. It receive a callback can go next month
     onPressArrowRight: PropTypes.func,
-    // Custom Header
-    CalendarHeaderComponent: PropTypes.node,
   };
 
   constructor(props) {
