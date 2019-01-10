@@ -16,6 +16,7 @@ import MultiPeriodDay from './day/multi-period';
 import SingleDay from './day/custom';
 import CalendarHeader from './header';
 import shouldComponentUpdate from './updater';
+import dayStyleConstructor from './day/basic/style'
 
 //Fallback when RN version is < 0.44
 const viewPropTypes = ViewPropTypes || View.propTypes;
@@ -168,13 +169,14 @@ class Calendar extends Component {
     }
 
     if (!dateutils.sameMonth(day, this.state.currentMonth) && this.props.hideExtraDays) {
-      return (<View key={id} style={{flex: 1}}/>);
+      return (<View key={id} style={dayStyleConstructor(this.props.theme).base}/>);
     }
 
     const DayComp = this.getDayComponent();
     const date = day.getDate();
     return (
       <DayComp
+        key={id}
         state={state}
         theme={this.props.theme}
         onPress={this.pressDay}
