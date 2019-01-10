@@ -44,6 +44,7 @@ class CalendarListItem extends Component {
           dayComponent={this.props.dayComponent}
           disabledByDefault={this.props.disabledByDefault}
           showWeekNumbers={this.props.showWeekNumbers}
+          CalendarHeaderComponent={this.props.CalendarHeaderComponent}
         />);
     } else {
       const text = row.toString();
