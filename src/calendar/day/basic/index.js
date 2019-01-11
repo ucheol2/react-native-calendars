@@ -44,6 +44,8 @@ class Day extends Component {
     const containerStyle = [this.style.base];
     const textStyle = [this.style.text];
     const dotStyle = [this.style.dot];
+    const dotContainerStyle = [this.style.dotContainer];
+    const dotLabelStyle = [this.style.dotLabel];
 
     let marking = this.props.marking || {};
     if (marking && marking.constructor === Array && marking.length) {
@@ -58,7 +60,12 @@ class Day extends Component {
       if (marking.dotColor) {
         dotStyle.push({backgroundColor: marking.dotColor});
       }
-      dot = (<View style={dotStyle}/>);
+      dot = (
+        <View style={dotContainerStyle}>
+          <View style={dotStyle}/>
+          {!!marking.label && <Text style={dotLabelStyle}>{marking.label}</Text>}
+        </View>
+      );
     }
 
     if (marking.selected) {

@@ -41,7 +41,6 @@ export default function styleConstructor(theme={}) {
     dot: {
       width: 4,
       height: 4,
-      marginTop: 1,
       borderRadius: 2,
       opacity: 0
     },
@@ -51,6 +50,20 @@ export default function styleConstructor(theme={}) {
     },
     selectedDot: {
       backgroundColor: appStyle.selectedDotColor
+    },
+    dotContainer: {
+      position: 'absolute',
+      height: 10,
+      bottom: -10,
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    dotLabel: {
+      paddingLeft: 2,
+      paddingRight: 6,
+      fontSize: 8,
+      color: appStyle.dayTextColor,
+      lineHeight: 9,
     },
     ...(theme[STYLESHEET_ID] || {})
   });
