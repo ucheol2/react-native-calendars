@@ -240,7 +240,7 @@ class Calendar extends Component {
         <View style={this.style.week}>
           {week}
         </View>
-        {weekLabel && (
+        {this.props.weekLabels && (
           <View style={this.style.weekLabel}>
             {weekLabel}
           </View>
