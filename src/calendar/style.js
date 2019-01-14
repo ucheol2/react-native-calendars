@@ -20,6 +20,12 @@ export default function getStyle(theme={}) {
       flexDirection: 'row',
       justifyContent: 'space-around'
     },
+    weekLabel: {
+      marginTop: 12,
+      marginBottom: 4,
+      alignSelf: 'flex-end',
+      height: 16,
+    },
     ...(theme[STYLESHEET_ID] || {})
   });
 }

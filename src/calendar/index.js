@@ -229,12 +229,24 @@ class Calendar extends Component {
     days.forEach((day, id2) => {
       week.push(this.renderDay(day, id2));
     }, this);
+    const weekLabel = this.props.weekLabels[days[0].toString('yyyy-MM-dd')]
 
     if (this.props.showWeekNumbers) {
       week.unshift(this.renderWeekNumber(days[days.length - 1].getWeek()));
     }
 
-    return (<View style={this.style.week} key={id}>{week}</View>);
+    return (
+      <View key={id}>
+        <View style={this.style.week}>
+          {week}
+        </View>
+        {weekLabel && (
+          <View style={this.style.weekLabel}>
+            {weekLabel}
+          </View>
+        )}
+      </View>
+    );
   }
 
   render() {
