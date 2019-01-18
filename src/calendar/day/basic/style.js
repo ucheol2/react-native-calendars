@@ -42,7 +42,9 @@ export default function styleConstructor(theme={}) {
       width: 4,
       height: 4,
       borderRadius: 2,
-      opacity: 0
+      opacity: 0,
+      position: 'absolute',
+      left: -6,
     },
     visibleDot: {
       opacity: 1,
@@ -59,8 +61,6 @@ export default function styleConstructor(theme={}) {
       alignItems: 'center',
     },
     dotLabel: {
-      paddingLeft: 2,
-      paddingRight: 6,
       fontSize: 8,
       color: appStyle.dayTextColor,
       lineHeight: 9,
