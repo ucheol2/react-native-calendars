@@ -205,8 +205,9 @@ class CalendarList extends Component {
         initialListSize={this.props.pastScrollRange + this.props.futureScrollRange + 1}
         data={this.state.rows}
         snapToAlignment='start'
-        snapToInterval={this.calendarHeight}
+        snapToInterval={this.props.calendarHeight}
         removeClippedSubviews={this.props.removeClippedSubviews}
+        decelerationRate="fast"
         pageSize={1}
         horizontal={this.props.horizontal}
         pagingEnabled={this.props.pagingEnabled}
