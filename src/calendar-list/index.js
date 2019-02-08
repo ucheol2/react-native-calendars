@@ -200,12 +200,12 @@ class CalendarList extends Component {
       <FlatList
         onLayout={this.onLayout}
         ref={(c) => this.listView = c}
-        //scrollEventThrottle={1000}
+        scrollEventThrottle={1000}
         style={[this.style.container, this.props.style]}
         initialListSize={this.props.pastScrollRange + this.props.futureScrollRange + 1}
         data={this.state.rows}
-        //snapToAlignment='start'
-        //snapToInterval={this.calendarHeight}
+        snapToAlignment='start'
+        snapToInterval={this.calendarHeight}
         removeClippedSubviews={this.props.removeClippedSubviews}
         pageSize={1}
         horizontal={this.props.horizontal}
