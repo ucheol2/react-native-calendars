@@ -44,7 +44,6 @@ export default function styleConstructor(theme={}) {
       borderRadius: 2,
       opacity: 0,
       position: 'absolute',
-      left: -6,
     },
     visibleDot: {
       opacity: 1,
@@ -59,11 +58,16 @@ export default function styleConstructor(theme={}) {
       bottom: -10,
       flexDirection: 'row',
       alignItems: 'center',
+      justifyContent: 'center',
+      left: 0,
+      right: 0,
     },
     dotLabel: {
       fontSize: 8,
       color: appStyle.dayTextColor,
       lineHeight: 9,
+      paddingLeft: 2,
+      paddingRight: 6,
     },
     ...(theme[STYLESHEET_ID] || {})
   });
