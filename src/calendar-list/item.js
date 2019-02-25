@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Text, View} from 'react-native';
 import Calendar from '../calendar';
 import styleConstructor from './style';
-import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 
 class CalendarListItem extends Component {
   static defaultProps = {
@@ -25,31 +24,29 @@ class CalendarListItem extends Component {
     const row = this.props.item;
     if (row.getTime) {
       return (
-        <GestureRecognizer>
-          <Calendar
-            theme={this.props.theme}
-            style={[{height: this.props.calendarHeight, width: this.props.calendarWidth}, this.style.calendar]}
-            current={row}
-            hideArrows={this.props.hideArrows}
-            hideExtraDays={this.props.hideExtraDays}
-            disableMonthChange
-            markedDates={this.props.markedDates}
-            markingType={this.props.markingType}
-            hideDayNames={this.props.hideDayNames}
-            onDayPress={this.props.onDayPress}
-            onDayLongPress={this.props.onDayLongPress}
-            displayLoadingIndicator={this.props.displayLoadingIndicator}
-            minDate={this.props.minDate}
-            maxDate={this.props.maxDate}
-            firstDay={this.props.firstDay}
-            monthFormat={this.props.monthFormat}
-            dayComponent={this.props.dayComponent}
-            disabledByDefault={this.props.disabledByDefault}
-            showWeekNumbers={this.props.showWeekNumbers}
-            CalendarHeaderComponent={this.props.CalendarHeaderComponent}
-            weekLabelComponents={this.props.weekLabelComponents}
-          />
-        </GestureRecognizer>
+        <Calendar
+          theme={this.props.theme}
+          style={[{height: this.props.calendarHeight, width: this.props.calendarWidth}, this.style.calendar]}
+          current={row}
+          hideArrows={this.props.hideArrows}
+          hideExtraDays={this.props.hideExtraDays}
+          disableMonthChange
+          markedDates={this.props.markedDates}
+          markingType={this.props.markingType}
+          hideDayNames={this.props.hideDayNames}
+          onDayPress={this.props.onDayPress}
+          onDayLongPress={this.props.onDayLongPress}
+          displayLoadingIndicator={this.props.displayLoadingIndicator}
+          minDate={this.props.minDate}
+          maxDate={this.props.maxDate}
+          firstDay={this.props.firstDay}
+          monthFormat={this.props.monthFormat}
+          dayComponent={this.props.dayComponent}
+          disabledByDefault={this.props.disabledByDefault}
+          showWeekNumbers={this.props.showWeekNumbers}
+          CalendarHeaderComponent={this.props.CalendarHeaderComponent}
+          weekLabelComponents={this.props.weekLabelComponents}
+        />
       );
     } else {
       const text = row.toString();
