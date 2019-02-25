@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {
   View,
-  ViewPropTypes
+  ViewPropTypes,
+  Animated,
 } from 'react-native';
 import PropTypes from 'prop-types';
 
@@ -78,6 +79,8 @@ class Calendar extends Component {
     // Handler which gets executed when press arrow icon left. It receive a callback can go next month
     onPressArrowRight: PropTypes.func,
   };
+
+  calendarHeight = new Animated.Value(this.props.calendarHeight)
 
   constructor(props) {
     super(props);
@@ -183,6 +186,7 @@ class Calendar extends Component {
         onLongPress={this.longPressDay}
         date={xdateToData(day)}
         marking={this.getDateMarking(day)}
+        animated={this.props.animatable && this.props.animated}
       >
         {date}
       </DayComp>
@@ -236,7 +240,7 @@ class Calendar extends Component {
     }
 
     return (
-      <View key={id}>
+      <View key={id} flex={1}>
         <View style={this.style.week}>
           {week}
         </View>
@@ -249,6 +253,18 @@ class Calendar extends Component {
         )}
       </View>
     );
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.animatable && this.props.animated !== prevProps.animated) {
+      Animated.timing(
+        this.calendarHeight,
+        {
+          toValue: this.props.animated ? this.props.animatedCalendarHeight : this.props.calendarHeight,
+          duration: 200,
+        }
+      ).start()
+    }
   }
 
   render() {
@@ -269,9 +285,12 @@ class Calendar extends Component {
 
     const { CalendarHeaderComponent } = this.props
     const Header = CalendarHeaderComponent || CalendarHeader
+    const animateStyle = this.props.animatable ? {
+      height: this.calendarHeight
+    } : {}
 
     return (
-      <View style={[this.style.container, this.props.style]}>
+      <Animated.View style={[this.style.container, this.props.style, animateStyle]}>
         <Header
           theme={this.props.theme}
           hideArrows={this.props.hideArrows}
@@ -287,7 +306,7 @@ class Calendar extends Component {
           onPressArrowRight={this.props.onPressArrowRight}
         />
         <View style={this.style.monthView}>{weeks}</View>
-      </View>);
+      </Animated.View>);
   }
 }
 

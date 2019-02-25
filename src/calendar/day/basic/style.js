@@ -62,6 +62,9 @@ export default function styleConstructor(theme={}) {
       left: 0,
       right: 0,
     },
+    animatedDotContainer: {
+      bottom: 0,
+    },
     dotLabel: {
       fontSize: 8,
       color: appStyle.dayTextColor,

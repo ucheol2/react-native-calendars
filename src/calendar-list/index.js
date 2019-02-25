@@ -86,7 +86,7 @@ class CalendarList extends Component {
 
     this.onViewableItemsChangedBound = this.onViewableItemsChanged.bind(this);
     this.renderCalendarBound = this.renderCalendar.bind(this);
-    this.getItemLayout = this.getItemLayout.bind(this);
+    //this.getItemLayout = this.getItemLayout.bind(this);
     this.onLayout = this.onLayout.bind(this);
   }
 
@@ -186,14 +186,22 @@ class CalendarList extends Component {
     return (<CalendarListItem item={item} calendarHeight={this.props.calendarHeight} calendarWidth={this.props.horizontal ? this.props.calendarWidth : undefined  } {...this.props} />);
   }
 
-  getItemLayout(data, index) {
-    return {length: this.props.horizontal ? this.props.calendarWidth : this.props.calendarHeight, offset: (this.props.horizontal ? this.props.calendarWidth : this.props.calendarHeight) * index, index};
-  }
+  //getItemLayout(data, index) {
+    //const { horizontal, calendarWidth, calendarHeight, animated, animatable, animatedCalendarHeight } = this.props
+    ////const length = horizontal ? calendarWidth : (animatable && animated ? animatedCalendarHeight : calendarHeight)
+    //const length = horizontal ? calendarWidth : calendarHeight
+    //return {
+      //length,
+      //offset: length * index,
+      //index,
+    //}
+  //}
 
   getMonthIndex(month) {
     let diffMonths = this.state.openDate.diffMonths(month) + this.props.pastScrollRange;
     return diffMonths;
   }
+
 
   render() {
     return (
@@ -205,7 +213,7 @@ class CalendarList extends Component {
         initialListSize={this.props.pastScrollRange + this.props.futureScrollRange + 1}
         data={this.state.rows}
         snapToAlignment='start'
-        snapToInterval={this.props.calendarHeight}
+        snapToInterval={this.props.animatable && this.props.animated ? this.props.animatedCalendarHeight : this.props.calendarHeight}
         removeClippedSubviews={this.props.removeClippedSubviews}
         decelerationRate="fast"
         pageSize={1}
@@ -218,7 +226,6 @@ class CalendarList extends Component {
         scrollEnabled={this.props.scrollingEnabled}
         keyExtractor={(item, index) => String(index)}
         initialScrollIndex={this.state.openDate ? this.getMonthIndex(this.state.openDate) : false}
-        getItemLayout={this.getItemLayout}
         scrollsToTop={this.props.scrollsToTop}
       />
     );

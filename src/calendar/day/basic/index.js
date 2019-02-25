@@ -46,6 +46,7 @@ class Day extends Component {
     const dotStyle = [this.style.dot];
     const dotContainerStyle = [this.style.dotContainer];
     const dotLabelStyle = [this.style.dotLabel];
+    if (this.props.animated) { dotContainerStyle.push(this.style.animatedDotContainer) }
 
     let marking = this.props.marking || {};
     if (marking && marking.constructor === Array && marking.length) {
