@@ -56,6 +56,8 @@ class CalendarList extends Component {
     removeClippedSubviews: Platform.OS === 'android' ? false : true,
   }
 
+  viewabilityConfig = { itemVisiblePercentThreshold: 50 }
+
   constructor(props) {
     super(props);
     this.style = styleConstructor(props.theme);
@@ -212,6 +214,7 @@ class CalendarList extends Component {
         horizontal={this.props.horizontal}
         pagingEnabled={this.props.pagingEnabled}
         onViewableItemsChanged={this.onViewableItemsChangedBound}
+        viewabilityConfig={this.viewabilityConfig}
         renderItem={this.renderCalendarBound}
         showsVerticalScrollIndicator={this.props.showScrollIndicator}
         showsHorizontalScrollIndicator={this.props.showScrollIndicator}
