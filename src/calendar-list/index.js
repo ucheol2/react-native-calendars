@@ -56,7 +56,7 @@ class CalendarList extends Component {
     removeClippedSubviews: Platform.OS === 'android' ? false : true,
   }
 
-  viewabilityConfig = { itemVisiblePercentThreshold: 50 }
+  viewabilityConfig = { viewAreaCoveragePercentThreshold: 50 }
 
   constructor(props) {
     super(props);
@@ -200,6 +200,7 @@ class CalendarList extends Component {
   render() {
     return (
       <FlatList
+        nestedScrollEnabled
         onLayout={this.onLayout}
         ref={(c) => this.listView = c}
         scrollEventThrottle={1000}
