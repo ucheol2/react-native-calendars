@@ -204,13 +204,10 @@ class CalendarList extends Component {
         onLayout={this.onLayout}
         ref={(c) => this.listView = c}
         scrollEventThrottle={1000}
-        style={[this.style.container, this.props.style]}
+        style={[this.style.container, this.props.style, {height: this.props.calendarHeight}]}
         initialListSize={this.props.pastScrollRange + this.props.futureScrollRange + 1}
         data={this.state.rows}
-        snapToAlignment='start'
-        snapToInterval={this.props.calendarHeight}
         removeClippedSubviews={this.props.removeClippedSubviews}
-        decelerationRate={Platform.select({ios: 'fast', android: 0})}
         pageSize={1}
         horizontal={this.props.horizontal}
         pagingEnabled={this.props.pagingEnabled}
